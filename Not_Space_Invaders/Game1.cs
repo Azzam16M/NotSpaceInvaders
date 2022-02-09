@@ -29,7 +29,7 @@ namespace Not_Space_Invaders
             player1Bullet.InitialPosition(player1);
         }
 
-        protected override void LoadContent()
+        protected override void LoadContent()//Comment
         {
             _spriteBatch = new SpriteBatch(GraphicsDevice);
 
