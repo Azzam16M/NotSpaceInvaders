@@ -12,6 +12,8 @@ namespace Not_Space_Invaders
         private Texture2D BulletTexture;
         private Player player1;
         private Bullet player1Bullet;
+        private Enemy[,] allEnemiesArray = new Enemy[8,5];
+        private Enemyships allEnemies;
         int xPosition = 327;
         int yPosition = 427;
         public Game1()
@@ -19,6 +21,7 @@ namespace Not_Space_Invaders
             _graphics = new GraphicsDeviceManager(this);
             Content.RootDirectory = "Content";
             IsMouseVisible = true;
+            _graphics.PreferredBackBufferWidth = 1200;
         }
 
         protected override void Initialize()
@@ -39,7 +42,11 @@ namespace Not_Space_Invaders
             player1 = new Player(myTexture, new Rectangle(xPosition, yPosition, myTexture.Width, myTexture.Height), Color.BlanchedAlmond);
             player1Bullet = new Bullet(BulletTexture, new Rectangle(xPosition, yPosition, BulletTexture.Width, BulletTexture.Height), Color.Red);
 
+            allEnemies = new Enemyships(new Rectangle(), myTexture, Color.White, allEnemiesArray, player1Bullet);
+            allEnemies.InitialiseEnemyShips();
+
             player1Bullet.InitialPosition(player1);
+
         }
 
         protected override void Update(GameTime gameTime)
@@ -64,6 +71,11 @@ namespace Not_Space_Invaders
             // TODO: Add your drawing code here
 
             _spriteBatch.Begin();
+
+            foreach (Enemy e in allEnemiesArray)
+            {
+                e.DrawSprite(_spriteBatch);
+            }
 
             player1.DrawSprite(_spriteBatch);
             player1Bullet.DrawSprite(_spriteBatch);

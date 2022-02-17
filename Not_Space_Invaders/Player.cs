@@ -23,5 +23,14 @@ namespace Not_Space_Invaders
                 spritePosition.X -= 1;
             }
         }
+        public bool CheckCollided(Sprite inOtherSprite)
+        {
+            bool Collided = false;
+            if (spritePosition.Intersects(inOtherSprite.Position))
+            {
+                Collided = true;
+            }
+            return Collided;
+        }
     }
 }

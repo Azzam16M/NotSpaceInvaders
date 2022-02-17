@@ -35,7 +35,5 @@ namespace Not_Space_Invaders
             return Collided;
 
         }
-
-
     }
 }

@@ -1,6 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
+using Microsoft.Xna.Framework.Input;
 
 namespace Not_Space_Invaders.Content
 {
@@ -18,7 +21,7 @@ namespace Not_Space_Invaders.Content
         private int frameIndex = 0;
 
         public Animation(Rectangle inPosition, Texture2D inTexture, Color inColour, int inframes)
-            : base(inPosition, inTexture, inColour)
+            : base(inTexture, inPosition, inColour)
         {
             spriteTexture = inTexture;
             int width = inTexture.Width / inframes;
@@ -37,7 +40,7 @@ namespace Not_Space_Invaders.Content
 
         public void Update(GameTime inGameTime)
         {
-            timeElapsed += (float)inGameTime.ElaspedGameTime.TotalSeconds;
+            //timeElapsed += (float)inGameTime.ElaspedGameTime.TotalSeconds;
 
             if(timeElapsed > timeToUpdate)
             {
